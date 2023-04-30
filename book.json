@@ -1,0 +1,392 @@
+[
+    {
+        "nombre": "El Gran Gatsby",
+        "precio": 2990,
+        "ubicacion": [
+            {
+                "bodega": "Tienda 1",
+                "stock": 30
+            },
+            {
+                "bodega": "Tienda 2",
+                "stock": 5
+            },
+            {
+                "bodega": "Tienda 3",
+                "stock": 15
+            },
+            {
+                "bodega": "Tienda 4",
+                "stock": 2
+            },
+            {
+                "bodega": "Tienda 5",
+                "stock": 0
+            }
+        ]
+    },
+    {
+        "nombre": "Cien años de soledad",
+        "precio": 3390,
+        "ubicacion": [
+            {
+                "bodega": "Tienda 1",
+                "stock": 12
+            },
+            {
+                "bodega": "Tienda 2",
+                "stock": 0
+            },
+            {
+                "bodega": "Tienda 3",
+                "stock": 7
+            },
+            {
+                "bodega": "Tienda 4",
+                "stock": 20
+            },
+            {
+                "bodega": "Tienda 5",
+                "stock": 3
+            }
+        ]
+    },
+    {
+        "nombre": "1984",
+        "precio": 3790,
+        "ubicacion": [
+            {
+                "bodega": "Tienda 1",
+                "stock": 0
+            },
+            {
+                "bodega": "Tienda 2",
+                "stock": 25
+            },
+            {
+                "bodega": "Tienda 3",
+                "stock": 3
+            },
+            {
+                "bodega": "Tienda 4",
+                "stock": 8
+            },
+            {
+                "bodega": "Tienda 5",
+                "stock": 11
+            }
+        ]
+    },
+    {
+        "nombre": "Don Quijote de la Mancha",
+        "precio": 4490,
+        "ubicacion": [
+            {
+                "bodega": "Tienda 1",
+                "stock": 20
+            },
+            {
+                "bodega": "Tienda 2",
+                "stock": 10
+            },
+            {
+                "bodega": "Tienda 3",
+                "stock": 0
+            },
+            {
+                "bodega": "Tienda 4",
+                "stock": 5
+            },
+            {
+                "bodega": "Tienda 5",
+                "stock": 30
+            }
+        ]
+    },
+    {
+        "nombre": "Orgullo y prejuicio",
+        "precio": 5990,
+        "ubicacion": [
+            {
+                "bodega": "Tienda 1",
+                "stock": 6
+            },
+            {
+                "bodega": "Tienda 2",
+                "stock": 8
+            },
+            {
+                "bodega": "Tienda 3",
+                "stock": 4
+            },
+            {
+                "bodega": "Tienda 4",
+                "stock": 18
+            },
+            {
+                "bodega": "Tienda 5",
+                "stock": 12
+            }
+        ]
+    },
+    {
+        "nombre": "El Código Da Vinci",
+        "precio": 6990,
+        "ubicacion": [
+            {
+                "bodega": "Tienda 1",
+                "stock": 2
+            },
+            {
+                "bodega": "Tienda 2",
+                "stock": 35
+            },
+            {
+                "bodega": "Tienda 3",
+                "stock": 10
+            },
+            {
+                "bodega": "Tienda 4",
+                "stock": 0
+            },
+            {
+                "bodega": "Tienda 5",
+                "stock": 20
+            }
+        ]
+    },
+    {
+        "nombre": "La Metamorfosis",
+        "precio": 3990,
+        "ubicacion": [
+            {
+                "bodega": "Tienda 1",
+                "stock": 15
+            },
+            {
+                "bodega": "Tienda 2",
+                "stock": 2
+            },
+            {
+                "bodega": "Tienda 3",
+                "stock": 30
+            },
+            {
+                "bodega": "Tienda 4",
+                "stock": 6
+            },
+            {
+                "bodega": "Tienda 5",
+                "stock": 0
+            }
+        ]
+    },
+    {
+        "nombre": "Matar a un ruiseñor",
+        "precio": 5290,
+        "ubicacion": [
+            {
+                "bodega": "Tienda 1",
+                "stock": 0
+            },
+            {
+                "bodega": "Tienda 2",
+                "stock": 20
+            },
+            {
+                "bodega": "Tienda 3",
+                "stock": 0
+            },
+            {
+                "bodega": "Tienda 4",
+                "stock": 15
+            },
+            {
+                "bodega": "Tienda 5",
+                "stock": 12
+            }
+        ]
+    },
+    {
+        "nombre": "El Hobbit",
+        "precio": 8990,
+        "ubicacion": [
+            {
+                "bodega": "Tienda 1",
+                "stock": 25
+            },
+            {
+                "bodega": "Tienda 2",
+                "stock": 6
+            },
+            {
+                "bodega": "Tienda 3",
+                "stock": 18
+            },
+            {
+                "bodega": "Tienda 4",
+                "stock": 1
+            },
+            {
+                "bodega": "Tienda 5",
+                "stock": 7
+            }
+        ]
+    },
+    {
+        "nombre": "El nombre del viento",
+        "precio": 5990,
+        "ubicacion": [
+            {
+                "bodega": "Tienda 1",
+                "stock": 7
+            },
+            {
+                "bodega": "Tienda 2",
+                "stock": 0
+            },
+            {
+                "bodega": "Tienda 3",
+                "stock": 22
+            },
+            {
+                "bodega": "Tienda 4",
+                "stock": 30
+            },
+            {
+                "bodega": "Tienda 5",
+                "stock": 3
+            }
+        ]
+    },
+    {
+        "nombre": "Harry Potter y la piedra filosofal",
+        "precio": 7990,
+        "ubicacion": [
+            {
+                "bodega": "Tienda 1",
+                "stock": 10
+            },
+            {
+                "bodega": "Tienda 2",
+                "stock": 20
+            },
+            {
+                "bodega": "Tienda 3",
+                "stock": 5
+            },
+            {
+                "bodega": "Tienda 4",
+                "stock": 40
+            },
+            {
+                "bodega": "Tienda 5",
+                "stock": 3
+            }
+        ]
+    },
+    {
+        "nombre": "Crónicas de Narnia",
+        "precio": 5990,
+        "ubicacion": [
+            {
+                "bodega": "Tienda 1",
+                "stock": 0
+            },
+            {
+                "bodega": "Tienda 2",
+                "stock": 12
+            },
+            {
+                "bodega": "Tienda 3",
+                "stock": 30
+            },
+            {
+                "bodega": "Tienda 4",
+                "stock": 6
+            },
+            {
+                "bodega": "Tienda 5",
+                "stock": 20
+            }
+        ]
+    },
+    {
+        "nombre": "El alquimista",
+        "precio": 4990,
+        "ubicacion": [
+            {
+                "bodega": "Tienda 1",
+                "stock": 15
+            },
+            {
+                "bodega": "Tienda 2",
+                "stock": 0
+            },
+            {
+                "bodega": "Tienda 3",
+                "stock": 8
+            },
+            {
+                "bodega": "Tienda 4",
+                "stock": 25
+            },
+            {
+                "bodega": "Tienda 5",
+                "stock": 0
+            }
+        ]
+    },
+    {
+        "nombre": "Donde los árboles cantan",
+        "precio": 4590,
+        "ubicacion": [
+            {
+                "bodega": "Tienda 1",
+                "stock": 5
+            },
+            {
+                "bodega": "Tienda 2",
+                "stock": 18
+            },
+            {
+                "bodega": "Tienda 3",
+                "stock": 2
+            },
+            {
+                "bodega": "Tienda 4",
+                "stock": 0
+            },
+            {
+                "bodega": "Tienda 5",
+                "stock": 10
+            }
+        ]
+    },
+    {
+        "nombre": "Los juegos del hambre",
+        "precio": 6990,
+        "ubicacion": [
+            {
+                "bodega": "Tienda 1",
+                "stock": 30
+            },
+            {
+                "bodega": "Tienda 2",
+                "stock": 10
+            },
+            {
+                "bodega": "Tienda 3",
+                "stock": 0
+            },
+            {
+                "bodega": "Tienda 4",
+                "stock": 15
+            },
+            {
+                "bodega": "Tienda 5",
+                "stock": 4
+            }
+        ]
+    }
+]

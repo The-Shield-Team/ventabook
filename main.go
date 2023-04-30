@@ -1,65 +1,29 @@
 package main
 
 import (
-	"encoding/json"
-	"fmt"
-	"io/ioutil"
+	"log"
 	"net/http"
+	"time"
+
+	"github.com/gorilla/mux"
 )
 
-// type con la información de los libros
+func main() {
 
-type book struct {
-	ID    int    `json:"ID"`
-	Name  string `json:"Name"`
-	Place string `json:"Place"`
-}
+	router := mux.NewRouter().StrictSlash(true)
 
-type allBook []book
+	router.HandleFunc("/books", getAllBooks).Methods("GET")
+	router.HandleFunc("/books/{id}", getOneBook).Methods("GET")
 
-var books = allBook{
-	{
-		ID:    1,
-		Name:  "El Quijote xD",
-		Place: "Bodega 1"},
-	{
-
-		ID:    1,
-		Name:  "El Quijote xD",
-		Place: "Bodega 2"},
-}
-
-func index(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Holi")
-}
-
-// get method
-func methodsBook(w http.ResponseWriter, r *http.Request) {
-	if r.Method == "GET" {
-		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(books)
-	} else if r.Method == "POST" {
-		var newBook book
-		reqBody, err := ioutil.ReadAll(r.Body)
-		if err != nil {
-			fmt.Fprintf(w, "Inserte libro")
-		}
-		json.Unmarshal(reqBody, &newBook)
-		newBook.ID = len(books) + 1
-		books = append(books, newBook)
-		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(newBook)
-		w.WriteHeader(http.StatusCreated)
-
+	// Crear el servidor HTTP
+	server := &http.Server{
+		Handler:      router,
+		Addr:         ":3250",
+		WriteTimeout: 15 * time.Second,
+		ReadTimeout:  15 * time.Second,
 	}
 
-}
+	// Iniciar el servidor
+	log.Fatal(server.ListenAndServe())
 
-func main() {
-	http.HandleFunc("/index", index)
-	http.HandleFunc("/books", methodsBook)
-	// http.HandleFunc("/books", createBook).Methods("POST")
-
-	// puerto donde vere el WS
-	http.ListenAndServe(":3250", nil)
 }
