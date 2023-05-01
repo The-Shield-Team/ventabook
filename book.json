@@ -4,23 +4,23 @@
         "precio": 2990,
         "ubicacion": [
             {
-                "bodega": "Tienda 1",
+                "bodega": "tienda_1",
                 "stock": 30
             },
             {
-                "bodega": "Tienda 2",
+                "bodega": "tienda_2",
                 "stock": 5
             },
             {
-                "bodega": "Tienda 3",
+                "bodega": "tienda_3",
                 "stock": 15
             },
             {
-                "bodega": "Tienda 4",
+                "bodega": "tienda_4",
                 "stock": 2
             },
             {
-                "bodega": "Tienda 5",
+                "bodega": "tienda_5",
                 "stock": 0
             }
         ]
@@ -30,23 +30,23 @@
         "precio": 3390,
         "ubicacion": [
             {
-                "bodega": "Tienda 1",
+                "bodega": "tienda_1",
                 "stock": 12
             },
             {
-                "bodega": "Tienda 2",
+                "bodega": "tienda_2",
                 "stock": 0
             },
             {
-                "bodega": "Tienda 3",
+                "bodega": "tienda_3",
                 "stock": 7
             },
             {
-                "bodega": "Tienda 4",
+                "bodega": "tienda_4",
                 "stock": 20
             },
             {
-                "bodega": "Tienda 5",
+                "bodega": "tienda_5",
                 "stock": 3
             }
         ]
@@ -56,23 +56,23 @@
         "precio": 3790,
         "ubicacion": [
             {
-                "bodega": "Tienda 1",
+                "bodega": "tienda_1",
                 "stock": 0
             },
             {
-                "bodega": "Tienda 2",
+                "bodega": "tienda_2",
                 "stock": 25
             },
             {
-                "bodega": "Tienda 3",
+                "bodega": "tienda_3",
                 "stock": 3
             },
             {
-                "bodega": "Tienda 4",
+                "bodega": "tienda_4",
                 "stock": 8
             },
             {
-                "bodega": "Tienda 5",
+                "bodega": "tienda_5",
                 "stock": 11
             }
         ]
@@ -82,23 +82,23 @@
         "precio": 4490,
         "ubicacion": [
             {
-                "bodega": "Tienda 1",
+                "bodega": "tienda_1",
                 "stock": 20
             },
             {
-                "bodega": "Tienda 2",
+                "bodega": "tienda_2",
                 "stock": 10
             },
             {
-                "bodega": "Tienda 3",
+                "bodega": "tienda_3",
                 "stock": 0
             },
             {
-                "bodega": "Tienda 4",
+                "bodega": "tienda_4",
                 "stock": 5
             },
             {
-                "bodega": "Tienda 5",
+                "bodega": "tienda_5",
                 "stock": 30
             }
         ]
@@ -108,23 +108,23 @@
         "precio": 5990,
         "ubicacion": [
             {
-                "bodega": "Tienda 1",
+                "bodega": "tienda_1",
                 "stock": 6
             },
             {
-                "bodega": "Tienda 2",
+                "bodega": "tienda_2",
                 "stock": 8
             },
             {
-                "bodega": "Tienda 3",
+                "bodega": "tienda_3",
                 "stock": 4
             },
             {
-                "bodega": "Tienda 4",
+                "bodega": "tienda_4",
                 "stock": 18
             },
             {
-                "bodega": "Tienda 5",
+                "bodega": "tienda_5",
                 "stock": 12
             }
         ]
@@ -134,23 +134,23 @@
         "precio": 6990,
         "ubicacion": [
             {
-                "bodega": "Tienda 1",
+                "bodega": "tienda_1",
                 "stock": 2
             },
             {
-                "bodega": "Tienda 2",
+                "bodega": "tienda_2",
                 "stock": 35
             },
             {
-                "bodega": "Tienda 3",
+                "bodega": "tienda_3",
                 "stock": 10
             },
             {
-                "bodega": "Tienda 4",
+                "bodega": "tienda_4",
                 "stock": 0
             },
             {
-                "bodega": "Tienda 5",
+                "bodega": "tienda_5",
                 "stock": 20
             }
         ]
@@ -160,23 +160,23 @@
         "precio": 3990,
         "ubicacion": [
             {
-                "bodega": "Tienda 1",
+                "bodega": "tienda_1",
                 "stock": 15
             },
             {
-                "bodega": "Tienda 2",
+                "bodega": "tienda_2",
                 "stock": 2
             },
             {
-                "bodega": "Tienda 3",
+                "bodega": "tienda_3",
                 "stock": 30
             },
             {
-                "bodega": "Tienda 4",
+                "bodega": "tienda_4",
                 "stock": 6
             },
             {
-                "bodega": "Tienda 5",
+                "bodega": "tienda_5",
                 "stock": 0
             }
         ]
@@ -186,23 +186,23 @@
         "precio": 5290,
         "ubicacion": [
             {
-                "bodega": "Tienda 1",
+                "bodega": "tienda_1",
                 "stock": 0
             },
             {
-                "bodega": "Tienda 2",
+                "bodega": "tienda_2",
                 "stock": 20
             },
             {
-                "bodega": "Tienda 3",
+                "bodega": "tienda_3",
                 "stock": 0
             },
             {
-                "bodega": "Tienda 4",
+                "bodega": "tienda_4",
                 "stock": 15
             },
             {
-                "bodega": "Tienda 5",
+                "bodega": "tienda_5",
                 "stock": 12
             }
         ]
@@ -212,23 +212,23 @@
         "precio": 8990,
         "ubicacion": [
             {
-                "bodega": "Tienda 1",
+                "bodega": "tienda_1",
                 "stock": 25
             },
             {
-                "bodega": "Tienda 2",
+                "bodega": "tienda_2",
                 "stock": 6
             },
             {
-                "bodega": "Tienda 3",
+                "bodega": "tienda_3",
                 "stock": 18
             },
             {
-                "bodega": "Tienda 4",
+                "bodega": "tienda_4",
                 "stock": 1
             },
             {
-                "bodega": "Tienda 5",
+                "bodega": "tienda_5",
                 "stock": 7
             }
         ]
@@ -238,23 +238,23 @@
         "precio": 5990,
         "ubicacion": [
             {
-                "bodega": "Tienda 1",
+                "bodega": "tienda_1",
                 "stock": 7
             },
             {
-                "bodega": "Tienda 2",
+                "bodega": "tienda_2",
                 "stock": 0
             },
             {
-                "bodega": "Tienda 3",
+                "bodega": "tienda_3",
                 "stock": 22
             },
             {
-                "bodega": "Tienda 4",
+                "bodega": "tienda_4",
                 "stock": 30
             },
             {
-                "bodega": "Tienda 5",
+                "bodega": "tienda_5",
                 "stock": 3
             }
         ]
@@ -264,23 +264,23 @@
         "precio": 7990,
         "ubicacion": [
             {
-                "bodega": "Tienda 1",
+                "bodega": "tienda_1",
                 "stock": 10
             },
             {
-                "bodega": "Tienda 2",
+                "bodega": "tienda_2",
                 "stock": 20
             },
             {
-                "bodega": "Tienda 3",
+                "bodega": "tienda_3",
                 "stock": 5
             },
             {
-                "bodega": "Tienda 4",
+                "bodega": "tienda_4",
                 "stock": 40
             },
             {
-                "bodega": "Tienda 5",
+                "bodega": "tienda_5",
                 "stock": 3
             }
         ]
@@ -290,23 +290,23 @@
         "precio": 5990,
         "ubicacion": [
             {
-                "bodega": "Tienda 1",
+                "bodega": "tienda_1",
                 "stock": 0
             },
             {
-                "bodega": "Tienda 2",
+                "bodega": "tienda_2",
                 "stock": 12
             },
             {
-                "bodega": "Tienda 3",
+                "bodega": "tienda_3",
                 "stock": 30
             },
             {
-                "bodega": "Tienda 4",
+                "bodega": "tienda_4",
                 "stock": 6
             },
             {
-                "bodega": "Tienda 5",
+                "bodega": "tienda_5",
                 "stock": 20
             }
         ]
@@ -316,23 +316,23 @@
         "precio": 4990,
         "ubicacion": [
             {
-                "bodega": "Tienda 1",
+                "bodega": "tienda_1",
                 "stock": 15
             },
             {
-                "bodega": "Tienda 2",
+                "bodega": "tienda_2",
                 "stock": 0
             },
             {
-                "bodega": "Tienda 3",
+                "bodega": "tienda_3",
                 "stock": 8
             },
             {
-                "bodega": "Tienda 4",
+                "bodega": "tienda_4",
                 "stock": 25
             },
             {
-                "bodega": "Tienda 5",
+                "bodega": "tienda_5",
                 "stock": 0
             }
         ]
@@ -342,23 +342,23 @@
         "precio": 4590,
         "ubicacion": [
             {
-                "bodega": "Tienda 1",
+                "bodega": "tienda_1",
                 "stock": 5
             },
             {
-                "bodega": "Tienda 2",
+                "bodega": "tienda_2",
                 "stock": 18
             },
             {
-                "bodega": "Tienda 3",
+                "bodega": "tienda_3",
                 "stock": 2
             },
             {
-                "bodega": "Tienda 4",
+                "bodega": "tienda_4",
                 "stock": 0
             },
             {
-                "bodega": "Tienda 5",
+                "bodega": "tienda_5",
                 "stock": 10
             }
         ]
@@ -368,23 +368,23 @@
         "precio": 6990,
         "ubicacion": [
             {
-                "bodega": "Tienda 1",
+                "bodega": "tienda_1",
                 "stock": 30
             },
             {
-                "bodega": "Tienda 2",
+                "bodega": "tienda_2",
                 "stock": 10
             },
             {
-                "bodega": "Tienda 3",
+                "bodega": "tienda_3",
                 "stock": 0
             },
             {
-                "bodega": "Tienda 4",
+                "bodega": "tienda_4",
                 "stock": 15
             },
             {
-                "bodega": "Tienda 5",
+                "bodega": "tienda_5",
                 "stock": 4
             }
         ]
