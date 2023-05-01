@@ -18,7 +18,7 @@ jobs:
           go-version: 1.13
       - name: Create uri file
         run: | 
-          echo -e 'package main\n\nvar mongoInfo = "mongodb://sairon933:mongo3restu.@20.121.116.27:27017/"' > ./uri.go
+          echo -e 'package main\n\nvar mongoInfo = "mongodb://${{ secrets.DB_USER }}:${{ secrets.DB_PASSWORD }}@${{ secrets.HOST_IP }}:27017/"' > ./uri.go
 
 
       - name: Build Go web service
