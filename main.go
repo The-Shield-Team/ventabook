@@ -15,6 +15,7 @@ func main() {
 	router.HandleFunc("/books", getAllBooks).Methods("GET")
 	router.HandleFunc("/books/{id}", getOneBook).Methods("GET")
 	router.HandleFunc("/books/{id}/{stock}/{bodega}", updateOneBook).Methods("PUT")
+	router.HandleFunc("/hello", sayHello).Methods("GET")
 
 	// Crear el servidor HTTP
 	server := &http.Server{
