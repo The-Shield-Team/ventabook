@@ -12,8 +12,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Build Go web service
+        run: bash ./build.sh
+
       - name: Copy files to remote server
-        run: scp -r -i ${{ secrets.SSH_KEY_BOOKS_VM }} ./ ${{ secrets.HOST_USER }}@${{ secrets.HOST_IP }}:/go-web/ventabook
+        run: scp -r -i ${{ secrets.SSH_KEY_BOOKS_VM }} ./webServicePOS ${{ secrets.HOST_USER }}@${{ secrets.HOST_IP }}:/go-web/ventabook
 
       - name: SSH into remote server and start service
         run: |
