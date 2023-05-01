@@ -13,6 +13,10 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
+func sayHello(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("Hello World!!"))
+}
+
 func getAllBooks(w http.ResponseWriter, r *http.Request) {
 
 	client := connection(mongoInfo)

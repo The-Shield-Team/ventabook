@@ -4,4 +4,4 @@
 go get -d -v ./...
 
 # Compilar la aplicación
-go build -o webServicePOS .
+go build

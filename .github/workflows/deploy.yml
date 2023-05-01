@@ -12,6 +12,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.13
+      - name: Create uri file
+        run: | 
+          echo -e 'package main\n\nvar mongoInfo = "mongodb://sairon933:mongo3restu.@20.121.116.27:27017/"' > ./uri.go
+
+
       - name: Build Go web service
         run: bash ./build.sh
       
@@ -19,8 +28,7 @@ jobs:
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY_BOOKS_VM }}
-          ARGS: "-rlgoDzvc -i --delete"
-          SOURCE: "./webServicePOS"
+          SOURCE: "./"
           REMOTE_HOST: ${{ secrets.HOST_IP }}
           REMOTE_USER: ${{ secrets.HOST_USER }}
           TARGET: /go-web/ventabook
