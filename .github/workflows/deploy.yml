@@ -1,4 +1,4 @@
-name: hello world
+name: Deploy Go web service
 
 on:
   push:
@@ -6,8 +6,16 @@ on:
       - main
 
 jobs:
-  Hello:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Hello World!
-        run: echo "Hello World"
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Copy files to remote server
+        run: scp -r -i ${{ secrets.SSH_KEY_BOOKS_VM }} ./ ${{ secrets.HOST_USER }}@${{ secrets.HOST_IP }}:/go-web/ventabook
+
+      - name: SSH into remote server and start service
+        run: |
+          ssh -i ${{ secrets.SSH_KEY_BOOKS_VM }} ${{ secrets.HOST_USER }}@${{ secrets.HOST_IP }} 'sudo service goweb stop'
+          ssh -i ${{ secrets.SSH_KEY_BOOKS_VM }} ${{ secrets.HOST_USER }}@${{ secrets.HOST_IP }} 'sudo service goweb start'
