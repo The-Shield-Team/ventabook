@@ -13,6 +13,12 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
+func sayHello(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("Hello World!!, we have CI/CD with github actions"))
+	w.Write([]byte("Hello World!!, this is first commit"))
+	w.Write([]byte("Hello World!!, this is second commit"))
+}
+
 func getAllBooks(w http.ResponseWriter, r *http.Request) {
 
 	client := connection(mongoInfo)

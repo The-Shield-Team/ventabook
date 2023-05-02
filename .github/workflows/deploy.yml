@@ -1,0 +1,45 @@
+name: Deploy Go web service
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.13
+      - name: Create uri file
+        run: | 
+          echo -e 'package main\n\nvar mongoInfo = "mongodb://${{ secrets.DB_USER }}:${{ secrets.DB_PASSWORD }}@${{ secrets.HOST_IP }}:27017/"' > ./uri.go
+
+
+      - name: Build Go web service
+        run: bash ./build.sh
+      
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY_BOOKS_VM }}
+          SOURCE: "./"
+          REMOTE_HOST: ${{ secrets.HOST_IP }}
+          REMOTE_USER: ${{ secrets.HOST_USER }}
+          TARGET: /go-web/ventabook
+      
+      - name: Descargar clave privada
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY_BOOKS_VM }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+      
+      - name: SSH into remote server and start service
+        run: |
+          ssh -i ~/.ssh/id_rsa ${{ secrets.HOST_USER }}@${{ secrets.HOST_IP }} 'sudo service goweb stop'
+          ssh -i ~/.ssh/id_rsa ${{ secrets.HOST_USER }}@${{ secrets.HOST_IP }} 'sudo service goweb start'
