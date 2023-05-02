@@ -15,6 +15,7 @@ import (
 
 func sayHello(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Hello World!!, we have CI/CD with github actions"))
+	w.Write([]byte("Hello World!!, this is first commit"))
 }
 
 func getAllBooks(w http.ResponseWriter, r *http.Request) {
