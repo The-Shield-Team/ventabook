@@ -12,10 +12,10 @@ func main() {
 
 	router := mux.NewRouter().StrictSlash(true)
 
-	router.HandleFunc("/books", getAllBooks).Methods("GET")
-	router.HandleFunc("/books/{id}", getOneBook).Methods("GET")
-	router.HandleFunc("/books/{id}/{stock}/{bodega}", updateOneBook).Methods("PUT")
-	router.HandleFunc("/hello", sayHello).Methods("GET")
+	router.HandleFunc("/books", corsMiddleware(getAllBooks)).Methods("GET")
+	router.HandleFunc("/books/{id}", corsMiddleware(getOneBook)).Methods("GET")
+	router.HandleFunc("/books/{id}/{stock}/{bodega}", corsMiddleware(updateOneBook)).Methods("PUT")
+	router.HandleFunc("/", corsMiddleware(sayHello)).Methods("GET")
 
 	// Crear el servidor HTTP
 	server := &http.Server{

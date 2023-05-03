@@ -14,7 +14,7 @@ import (
 )
 
 func sayHello(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Hello World!!, we have CI/CD with github actions"))
+	w.Write([]byte("Welcome to API Ventabook"))
 
 }
 
