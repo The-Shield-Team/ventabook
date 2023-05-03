@@ -20,7 +20,7 @@ func main() {
 	// Crear el servidor HTTP
 	server := &http.Server{
 		Handler:      router,
-		Addr:         ":3251",
+		Addr:         ":3250",
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,
 	}
