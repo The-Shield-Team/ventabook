@@ -10,10 +10,13 @@ type Location struct {
 }
 
 type Book struct {
-	ID        primitive.ObjectID `bson:"_id"`
-	Nombre    string             `bson:"nombre"`
-	Precio    int                `bson:"precio"`
-	Ubicacion []Location         `bson:"ubicacion"`
+	ID          primitive.ObjectID `bson:"_id"`
+	Nombre      string             `bson:"nombre"`
+	Autor       string             `bson:"autor"`
+	Descripcion string             `bson:"descripcion"`
+	Imagen      string             `bson:"imagen"`
+	Precio      int                `bson:"precio"`
+	Ubicacion   []Location         `bson:"ubicacion"`
 }
 
 type AllBooks []Book

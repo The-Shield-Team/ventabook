@@ -13,7 +13,8 @@ func main() {
 	router := mux.NewRouter().StrictSlash(true)
 
 	router.HandleFunc("/books", corsMiddleware(getAllBooks)).Methods("GET")
-	router.HandleFunc("/books/{id}", corsMiddleware(getOneBook)).Methods("GET")
+	router.HandleFunc("/books/{params:.+}", corsMiddleware(getBookByAny)).Methods("GET")
+
 	router.HandleFunc("/books/{id}/{stock}/{bodega}", corsMiddleware(updateOneBook)).Methods("PUT")
 	router.HandleFunc("/", corsMiddleware(sayHello)).Methods("GET")
 

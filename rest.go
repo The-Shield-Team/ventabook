@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
+	"strings"
 
 	"github.com/gorilla/mux"
 	"go.mongodb.org/mongo-driver/bson"
@@ -64,16 +65,11 @@ func getAllBooks(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func getOneBook(w http.ResponseWriter, r *http.Request) {
+func getOneBook(w http.ResponseWriter, r *http.Request, id string) {
 	// genero conexion
 	client := connection(mongoInfo)
 	coll := client.Database("ventabookDB").Collection("books")
 
-	// extraigo variables
-	vars := mux.Vars(r)
-	fmt.Printf("vars %s", vars)
-	id := vars["id"]
-	fmt.Printf("\nid %s\n", id)
 	objectID, errs := primitive.ObjectIDFromHex(id)
 
 	if errs != nil {
@@ -107,6 +103,151 @@ func getOneBook(w http.ResponseWriter, r *http.Request) {
 	w.Write(jsonData)
 	defer client.Disconnect(context.Background())
 
+}
+func getOneBookByNombre(w http.ResponseWriter, r *http.Request, nombre string) {
+	// genero conexion
+	client := connection(mongoInfo)
+	coll := client.Database("ventabookDB").Collection("books")
+
+	// // extraigo variables
+	// vars := mux.Vars(r)
+
+	// nombre := vars["nombre"]
+
+	//genero filtro pattern es el patron que usare para hacer una busqueda parcial
+	pattern := primitive.Regex{Pattern: ".*" + nombre + ".*", Options: "i"}
+	filter := bson.D{{Key: "nombre", Value: pattern}}
+
+	cursor, err := coll.Find(context.TODO(), filter)
+	if err != nil {
+
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	// Crear una lista para almacenar los libros
+	var books []Book
+
+	// Iterar sobre los documentos encontrados y agregarlos a la lista
+	for cursor.Next(context.Background()) {
+		var book Book
+		if err := cursor.Decode(&book); err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		books = append(books, book)
+	}
+
+	// Comprobar errores después de iterar
+	if err := cursor.Err(); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	// Convertir la lista de libros a JSON
+	jsonData, err := json.Marshal(books)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	// Establecer la respuesta como un JSON
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(jsonData)
+
+	defer cursor.Close(context.Background())
+
+}
+
+func getOneBookByAutor(w http.ResponseWriter, r *http.Request, autor string) {
+	// genero conexion
+	client := connection(mongoInfo)
+	coll := client.Database("ventabookDB").Collection("books")
+
+	// // extraigo variables
+	// vars := mux.Vars(r)
+
+	// nombre := vars["autor"]
+
+	//genero filtro pattern es el patron que usare para hacer una busqueda parcial
+	pattern := primitive.Regex{Pattern: ".*" + autor + ".*", Options: "i"}
+	filter := bson.D{{Key: "autor", Value: pattern}}
+
+	cursor, err := coll.Find(context.TODO(), filter)
+	if err != nil {
+
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	// Crear una lista para almacenar los libros
+	var books []Book
+
+	// Iterar sobre los documentos encontrados y agregarlos a la lista
+	for cursor.Next(context.Background()) {
+		var book Book
+		if err := cursor.Decode(&book); err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		books = append(books, book)
+	}
+
+	// Comprobar errores después de iterar
+	if err := cursor.Err(); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	// Convertir la lista de libros a JSON
+	jsonData, err := json.Marshal(books)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	// Establecer la respuesta como un JSON
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(jsonData)
+
+	defer cursor.Close(context.Background())
+
+}
+
+func getBookByAny(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	params := strings.Split(vars["params"], "/")
+
+	var nombre, autor, id string
+	for _, p := range params {
+		if strings.HasPrefix(p, "nombre=") {
+			nombre = strings.TrimPrefix(p, "nombre=")
+		} else if strings.HasPrefix(p, "autor=") {
+			autor = strings.TrimPrefix(p, "autor=")
+		} else if strings.HasPrefix(p, "id=") {
+			id = strings.TrimPrefix(p, "id=")
+		}
+	}
+
+	if nombre == "" && autor == "" && id == "" {
+		http.Error(w, "Debe proporcionar al menos un parámetro válido: nombre o autor", http.StatusBadRequest)
+		return
+	}
+	if nombre != "" {
+		getOneBookByNombre(w, r, nombre)
+		return
+	}
+	if autor != "" {
+		getOneBookByAutor(w, r, autor)
+		return
+	}
+	if id != "" {
+		getOneBook(w, r, id)
+		return
+	} else {
+		http.Error(w, "Debe proporcionar al menos un parámetro válido: nombre o autor", http.StatusBadRequest)
+		return
+	}
 }
 
 func updateOneBook(w http.ResponseWriter, r *http.Request) {
