@@ -285,3 +285,37 @@ func updateOneBook(w http.ResponseWriter, r *http.Request) {
 	fmt.Printf("Documents updated: %v\n", result.ModifiedCount)
 	defer client.Disconnect(context.Background())
 }
+
+func Facturar(w http.ResponseWriter, r *http.Request) {
+	// genero conexion
+	// client := connection(mongoInfo)
+	// coll := client.Database("ventabookDB").Collection("books")
+
+	// extraigo variables
+	decoder := json.NewDecoder(r.Body)
+	defer r.Body.Close()
+
+	// guardo valores en la variable FacturaPost
+	var p FacturaPost
+	err := decoder.Decode(&p)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	// var f Factura
+
+	// //genero filtro
+	// filter := bson.M{"_id": objectID, "ubicacion.bodega": bodega}
+
+	// update := bson.M{"$inc": bson.M{"ubicacion.$.stock": stock}}
+	// result, err := coll.UpdateOne(context.TODO(), filter, update)
+
+	// if err != nil {
+	// 	http.Error(w, err.Error(), http.StatusInternalServerError)
+	// 	return
+	// }
+	// fmt.Printf("Documents matched: %v\n", result.MatchedCount)
+	// fmt.Printf("Documents updated: %v\n", result.ModifiedCount)
+	// defer client.Disconnect(context.Background())
+}
