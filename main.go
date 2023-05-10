@@ -18,6 +18,7 @@ func main() {
 
 	router.HandleFunc("/books/{id}/{stock}/{bodega}", corsMiddleware(updateOneBook)).Methods("PUT")
 	router.HandleFunc("/", corsMiddleware(sayHello)).Methods("GET")
+	router.HandleFunc("/last", corsMiddleware(Lastito)).Methods("GET")
 
 	// Crear el servidor HTTP
 	server := &http.Server{

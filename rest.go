@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/gorilla/mux"
 	"go.mongodb.org/mongo-driver/bson"
@@ -109,11 +110,6 @@ func getOneBookByNombre(w http.ResponseWriter, r *http.Request, nombre string) {
 	client := connection(mongoInfo)
 	coll := client.Database("ventabookDB").Collection("books")
 
-	// // extraigo variables
-	// vars := mux.Vars(r)
-
-	// nombre := vars["nombre"]
-
 	//genero filtro pattern es el patron que usare para hacer una busqueda parcial
 	pattern := primitive.Regex{Pattern: ".*" + nombre + ".*", Options: "i"}
 	filter := bson.D{{Key: "nombre", Value: pattern}}
@@ -163,11 +159,6 @@ func getOneBookByAutor(w http.ResponseWriter, r *http.Request, autor string) {
 	// genero conexion
 	client := connection(mongoInfo)
 	coll := client.Database("ventabookDB").Collection("books")
-
-	// // extraigo variables
-	// vars := mux.Vars(r)
-
-	// nombre := vars["autor"]
 
 	//genero filtro pattern es el patron que usare para hacer una busqueda parcial
 	pattern := primitive.Regex{Pattern: ".*" + autor + ".*", Options: "i"}
@@ -305,9 +296,20 @@ func Facturar(w http.ResponseWriter, r *http.Request) {
 
 	// variable factura por crear	var
 
-	var FacturaTipo = p.Tipo
-	var FacturaNumero = 1
-	var FacturaFecha = "Hoy"
+	FacturaTipo, err := TipoFactura(w, p.Tipo)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	FacturaNumero, err := LastDocument(w, r, FacturaTipo)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	FacturaNumero = FacturaNumero + 1
+	now := time.Now()
+	var FacturaFecha = now.Format("02-01-2006")
 	var FacturaCliente = p.Cliente
 	var FacturaRetira = p.Retira
 	var FacturaRut = p.Rut
@@ -336,15 +338,24 @@ func Facturar(w http.ResponseWriter, r *http.Request) {
 	result, err := coll.InsertOne(context.TODO(), factura)
 
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		http.Error(w, "no se pudo ingresar el documento", http.StatusInternalServerError)
 		return
 	}
 
 	fmt.Println("Documents matched:", result)
+	// retorna la factura como json
 
-	// w.Header().Set("Content-Type", "application/pdf")
-	// json.NewEncoder(w).Encode(factura)
-	FacturarHtml(factura)
-	HTMLHandler(w, r)
+	jsonFacturas, err := json.Marshal(factura)
+	if err != nil {
+		http.Error(w, "no se pudo ingresar el documento", http.StatusBadRequest)
+
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(jsonFacturas)
+
+	////
+	// FacturarHtml(factura)
+	// HTMLHandler(w, r)
 	defer client.Disconnect(context.Background())
 }
