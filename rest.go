@@ -288,8 +288,8 @@ func updateOneBook(w http.ResponseWriter, r *http.Request) {
 
 func Facturar(w http.ResponseWriter, r *http.Request) {
 	// genero conexion
-	// client := connection(mongoInfo)
-	// coll := client.Database("ventabookDB").Collection("books")
+	client := connection(mongoInfo)
+	coll := client.Database("facturacion").Collection("documentos")
 
 	// extraigo variables
 	decoder := json.NewDecoder(r.Body)
@@ -303,19 +303,43 @@ func Facturar(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// var f Factura
+	// variable factura por crear	var
 
-	// //genero filtro
-	// filter := bson.M{"_id": objectID, "ubicacion.bodega": bodega}
+	var FacturaTipo = p.Tipo
+	var FacturaNumero = 1
+	var FacturaFecha = "Hoy"
+	var FacturaCliente = p.Cliente
+	var FacturaRetira = p.Retira
+	var FacturaRut = p.Rut
+	var FacturaDireccion = p.Direccion
+	var FacturaEmail = p.Email
+	var FacturaNombreLibro = p.NombreLibro
+	var FacturaPrecio = p.Precio
+	var FacturaCantidad = p.Cantidad
+	var FacturaTotal = p.Total
 
-	// update := bson.M{"$inc": bson.M{"ubicacion.$.stock": stock}}
-	// result, err := coll.UpdateOne(context.TODO(), filter, update)
+	factura := Factura{
+		ID:          primitive.NewObjectID(),
+		Tipo:        FacturaTipo,
+		Numero:      FacturaNumero,
+		Fecha:       FacturaFecha,
+		Cliente:     FacturaCliente,
+		Retira:      FacturaRetira,
+		Rut:         FacturaRut,
+		Direccion:   FacturaDireccion,
+		Email:       FacturaEmail,
+		NombreLibro: FacturaNombreLibro,
+		Precio:      FacturaPrecio,
+		Cantidad:    FacturaCantidad,
+		Total:       FacturaTotal}
 
-	// if err != nil {
-	// 	http.Error(w, err.Error(), http.StatusInternalServerError)
-	// 	return
-	// }
-	// fmt.Printf("Documents matched: %v\n", result.MatchedCount)
-	// fmt.Printf("Documents updated: %v\n", result.ModifiedCount)
-	// defer client.Disconnect(context.Background())
+	result, err := coll.InsertOne(context.TODO(), factura)
+
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	fmt.Println("Documents matched:", result)
+
+	defer client.Disconnect(context.Background())
 }

@@ -1,0 +1,58 @@
+[
+    {
+        "tipo": "Boleta",
+        "numero": 1,
+        "fecha": "10-05-2023",
+        "cliente": "Juan Perez",
+        "retira": "Juan Perez",
+        "rut": "11.111.111-1",
+        "direccion": "sus casas",
+        "email": "SUSmail@mail.com",
+        "nombre": "Libros de Test data base",
+        "precio": 100,
+        "cantidad": 1,
+        "total": 100
+    },
+    {
+        "tipo": "Boleta",
+        "numero": 2,
+        "fecha": "11-05-2023",
+        "cliente": "Maria Rodriguez",
+        "retira": "Maria Rodriguez",
+        "rut": "11.111.111-1",
+        "direccion": "sus casas",
+        "email": "SUSmail@mail.com",
+        "nombre": "Libros de Test data base",
+        "precio": 200,
+        "cantidad": 2,
+        "total": 400
+    },
+    {
+        "tipo": "Factura",
+        "numero": 1,
+        "fecha": "12-05-2023",
+        "cliente": "Pedro Gomez",
+        "retira": "Pedro Gomez",
+        "rut": "11.111.111-1",
+        "direccion": "sus casas",
+        "email": "SUSmail@mail.com",
+        "nombre": "Libros de Test data base",
+        "precio": 500,
+        "cantidad": 1,
+        "total": 500
+    },
+    {
+        "tipo": "Factura",
+        "numero": 2,
+        "fecha": "13-05-2023",
+        "cliente": "Ana Gutierrez",
+        "retira": "Ana Gutierrez",
+        "rut": "11.111.111-1",
+        "direccion": "sus casas",
+        "email": "SUSmail@mail.com",
+        "nombre": "Libros de Test data base",
+        "precio": 1000,
+        "cantidad": 2,
+        "total": 2000
+    }
+]

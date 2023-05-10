@@ -14,6 +14,7 @@ func main() {
 
 	router.HandleFunc("/books", corsMiddleware(getAllBooks)).Methods("GET")
 	router.HandleFunc("/books/{params:.+}", corsMiddleware(getBookByAny)).Methods("GET")
+	router.HandleFunc("/facturar", corsMiddleware(Facturar)).Methods("POST")
 
 	router.HandleFunc("/books/{id}/{stock}/{bodega}", corsMiddleware(updateOneBook)).Methods("PUT")
 	router.HandleFunc("/", corsMiddleware(sayHello)).Methods("GET")
