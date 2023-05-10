@@ -342,7 +342,10 @@ func Facturar(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Println("Documents matched:", result)
 
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(factura)
+	// w.Header().Set("Content-Type", "application/pdf")
+	// json.NewEncoder(w).Encode(factura)
+	FacturarHtml(factura)
+	FacturarPdf()
+	PDFHandler(w, r)
 	defer client.Disconnect(context.Background())
 }

@@ -4,13 +4,15 @@ import (
 	"bytes"
 	"io/ioutil"
 	"log"
+	"net/http"
+	"os"
 
 	"github.com/SebastiaanKlippert/go-wkhtmltopdf"
 )
 
 func FacturarPdf() {
 	// Leer el archivo HTML
-	htmlBytes, err := ioutil.ReadFile("factura1515.html")
+	htmlBytes, err := ioutil.ReadFile("factura.html")
 	if err != nil {
 		log.Fatalf("Error al leer el archivo HTML: %v", err)
 	}
@@ -35,8 +37,35 @@ func FacturarPdf() {
 	}
 
 	// Guardar el archivo PDF generado
-	err = pdfg.WriteFile("archivo.pdf")
+	err = pdfg.WriteFile("factura.pdf")
 	if err != nil {
 		log.Fatalf("Error al guardar el archivo PDF: %v", err)
+	}
+}
+
+func PDFHandler(w http.ResponseWriter, r *http.Request) {
+	// Abrir el archivo PDF
+	pdfFile, err := os.Open("factura.pdf")
+	if err != nil {
+		http.Error(w, "No se pudo leer el archivo PDF", http.StatusInternalServerError)
+		return
+	}
+	defer pdfFile.Close()
+
+	// Leer el contenido del archivo PDF en un []byte
+	pdfBytes, err := ioutil.ReadAll(pdfFile)
+	if err != nil {
+		http.Error(w, "No se pudo leer el contenido del archivo PDF", http.StatusInternalServerError)
+		return
+	}
+
+	// Establecer el encabezado de respuesta como "application/pdf"
+	w.Header().Set("Content-Type", "application/pdf")
+
+	// Escribir los datos del archivo PDF en la respuesta HTTP
+	_, err = w.Write(pdfBytes)
+	if err != nil {
+		http.Error(w, "No se pudo escribir el contenido del archivo PDF en la respuesta", http.StatusInternalServerError)
+		return
 	}
 }
