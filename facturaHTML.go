@@ -2,6 +2,8 @@ package main
 
 import (
 	"io/ioutil"
+	"net/http"
+	"os"
 	"strconv"
 	"strings"
 
@@ -48,4 +50,31 @@ func FacturarHtml(f Factura) {
 		panic(err)
 	}
 
+}
+
+func HTMLHandler(w http.ResponseWriter, r *http.Request) {
+	// Abrir el archivo HTML
+	htmlFile, err := os.Open("factura.html")
+	if err != nil {
+		http.Error(w, "No se pudo leer el archivo HTML", http.StatusInternalServerError)
+		return
+	}
+	defer htmlFile.Close()
+
+	// Leer el contenido del archivo HTML en un []byte
+	htmlBytes, err := ioutil.ReadAll(htmlFile)
+	if err != nil {
+		http.Error(w, "No se pudo leer el contenido del archivo HTML", http.StatusInternalServerError)
+		return
+	}
+
+	// Establecer el encabezado de respuesta como "text/html"
+	w.Header().Set("Content-Type", "text/html")
+
+	// Escribir los datos del archivo HTML en la respuesta HTTP
+	_, err = w.Write(htmlBytes)
+	if err != nil {
+		http.Error(w, "No se pudo escribir el contenido del archivo HTML en la respuesta", http.StatusInternalServerError)
+		return
+	}
 }
