@@ -339,7 +339,10 @@ func Facturar(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+
 	fmt.Println("Documents matched:", result)
 
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(factura)
 	defer client.Disconnect(context.Background())
 }

@@ -49,3 +49,7 @@ type FacturaPost struct {
 	Cantidad    int    `bson:"cantidad"`
 	Total       int    `bson:"total"`
 }
+
+type Response struct {
+	Mensaje string `bson:"mensaje"`
+}
