@@ -14,6 +14,12 @@ func corsMiddleware(handleFunc http.HandlerFunc) http.HandlerFunc {
 		})
 
 		// Aplicar las opciones CORS a la solicitud
-		c.Handler(handleFunc).ServeHTTP(w, r)
+		handler := c.Handler(handleFunc)
+		// Agregar los encabezados CORS a la respuesta HTTP
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT")
+
+		// Terminar de procesar la solicitud
+		handler.ServeHTTP(w, r)
 	}
 }
