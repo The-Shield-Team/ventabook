@@ -274,6 +274,7 @@ func updateOneBook(w http.ResponseWriter, r *http.Request) {
 	}
 	fmt.Printf("Documents matched: %v\n", result.MatchedCount)
 	fmt.Printf("Documents updated: %v\n", result.ModifiedCount)
+	w.Header().Set("Content-Type", "application/json")
 	defer client.Disconnect(context.Background())
 }
 
