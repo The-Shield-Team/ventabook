@@ -2,15 +2,14 @@ package main
 
 import (
 	"io/ioutil"
-	"net/http"
-	"os"
+
 	"strconv"
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
 )
 
-func FacturarHtml(f Factura) {
+func FacturarHtml(f Factura) string {
 
 	// cambiar html
 	htmlBytes, err := ioutil.ReadFile("factura.html")
@@ -42,39 +41,6 @@ func FacturarHtml(f Factura) {
 	if err != nil {
 		panic(err)
 	}
-	// Escribir la cadena de texto actualizada de vuelta al archivo HTML
-	facturaSalida := "factura.html"
+	return htmlString
 
-	err = ioutil.WriteFile(facturaSalida, []byte(htmlString), 0644)
-	if err != nil {
-		panic(err)
-	}
-
-}
-
-func HTMLHandler(w http.ResponseWriter, r *http.Request) {
-	// Abrir el archivo HTML
-	htmlFile, err := os.Open("factura.html")
-	if err != nil {
-		http.Error(w, "No se pudo leer el archivo HTML", http.StatusInternalServerError)
-		return
-	}
-	defer htmlFile.Close()
-
-	// Leer el contenido del archivo HTML en un []byte
-	htmlBytes, err := ioutil.ReadAll(htmlFile)
-	if err != nil {
-		http.Error(w, "No se pudo leer el contenido del archivo HTML", http.StatusInternalServerError)
-		return
-	}
-
-	// Establecer el encabezado de respuesta como "text/html"
-	w.Header().Set("Content-Type", "text/html")
-
-	// Escribir los datos del archivo HTML en la respuesta HTTP
-	_, err = w.Write(htmlBytes)
-	if err != nil {
-		http.Error(w, "No se pudo escribir el contenido del archivo HTML en la respuesta", http.StatusInternalServerError)
-		return
-	}
 }

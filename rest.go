@@ -346,7 +346,16 @@ func Facturar(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Documents matched:", result)
 	// retorna la factura como json
 
-	jsonFacturas, err := json.Marshal(factura)
+	facturastring := FacturarHtml(factura)
+	datosAdcionales := map[string]interface{}{
+		"html": facturastring,
+	}
+	data := make(map[string]interface{})
+	data["factura"] = factura
+	for key, value := range datosAdcionales {
+		data[key] = value
+	}
+	jsonFacturas, err := json.Marshal(data)
 	if err != nil {
 		http.Error(w, "no se pudo ingresar el documento", http.StatusBadRequest)
 

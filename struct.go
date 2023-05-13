@@ -38,16 +38,16 @@ type Factura struct {
 }
 
 type FacturaPost struct {
-	Tipo      string `bson:"tipo"`
-	Cliente   string `bson:"cliente"`
-	Retira    string `bson:"retira"`
-	Rut       string `bson:"rut"`
-	Direccion string `bson:"direccion"`
-	Email     string `bson:"email"`
-	// IDLibro     primitive.ObjectID `bson:"idLibro"`
-	// Sucursal    string             `bson:"sucursal"`
-	NombreLibro string `bson:"nombre"`
-	Precio      int    `bson:"precio"`
-	Cantidad    int    `bson:"cantidad"`
-	Total       int    `bson:"total"`
+	Tipo        string             `bson:"tipo"`
+	Cliente     string             `bson:"cliente"`
+	Retira      string             `bson:"retira"`
+	Rut         string             `bson:"rut"`
+	Direccion   string             `bson:"direccion"`
+	Email       string             `bson:"email"`
+	IDLibro     primitive.ObjectID `bson:"idLibro"`
+	Sucursal    string             `bson:"sucursal"`
+	NombreLibro string             `bson:"nombre"`
+	Precio      int                `bson:"precio"`
+	Cantidad    int                `bson:"cantidad"`
+	Total       int                `bson:"total"`
 }
