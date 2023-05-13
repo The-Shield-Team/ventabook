@@ -346,7 +346,7 @@ func Facturar(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Documents matched:", result)
 	// retorna la factura como json
 
-	facturastring := FacturarHtml(factura)
+	facturastring := FacturarHtml(factura, p)
 	datosAdcionales := map[string]interface{}{
 		"html": facturastring,
 	}

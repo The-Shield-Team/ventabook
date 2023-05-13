@@ -1,46 +1,11 @@
 package main
 
 import (
-	"io/ioutil"
-
 	"strconv"
-	"strings"
-
-	"github.com/PuerkitoBio/goquery"
 )
 
-func FacturarHtml(f Factura) string {
+func FacturarHtml(f Factura, p FacturaPost) string {
 
-	// cambiar html
-	htmlBytes, err := ioutil.ReadFile("factura.html")
-	if err != nil {
-		panic(err)
-	}
-
-	// Convertir los bytes a una cadena de texto
-	htmlString := string(htmlBytes)
-
-	// Seleccionar y actualizar el valor del elemento con id="mi-elemento"
-	doc, err := goquery.NewDocumentFromReader(strings.NewReader(htmlString))
-	if err != nil {
-		panic(err)
-	}
-
-	doc.Find("#tipo").SetHtml(f.Tipo)
-	doc.Find("#numero").SetHtml(strconv.Itoa(f.Numero))
-	doc.Find("#fecha").SetHtml(f.Fecha)
-	doc.Find("#cliente").SetHtml(f.Cliente)
-	doc.Find("#retira").SetHtml(f.Retira)
-	doc.Find("#rut").SetHtml(f.Rut)
-	doc.Find("#direccion").SetHtml(f.Direccion)
-	doc.Find("#email").SetHtml(f.Email)
-	doc.Find("#nombreLibro").SetHtml(f.NombreLibro)
-	doc.Find("#total").SetHtml(strconv.Itoa(f.Total))
-
-	htmlString, err = doc.Html()
-	if err != nil {
-		panic(err)
-	}
-	return htmlString
+	return "<html lang='en'><head><meta charset='UTF-8'/><meta http-equiv='X-UA-Compatible' content='IE=edge'/><meta name='viewport' content='width=device-width, initial-scale=1.0'/><link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'/><title>Document</title></head><body><div class='container'>       <div class='card'><div class='card-header'><p id='tipo'>" + f.Tipo + "</p><strong id='numero'>" + strconv.Itoa(f.Numero) + "</strong><span class='float-right' id='fecha'>" + f.Fecha + "</span></div><div class='card-body'><div class='row mb-4'><div class='col-sm-6'><h6 class='mb-3'>Emison:</h6><div><strong>Book Sphere</strong></div><div>Direccion Alguna #8</div><div>Rut: 81.000.000-K</div><div>Santiago, Chile</div><div>Web: www.BookSphere.cl</div></div><div class='col-sm-6'><h6 class='mb-3'>Cliente:</h6><div><strong id='cliente'>" + f.Cliente + "</strong></div><div id='retira'>" + f.Retira + "</div><div id='rut'>" + f.Rut + "</div><div id='direccion'>" + f.Direccion + "</div><div id='email'>" + f.Email + "</div></div></div><div class='table-responsive-sm'><table class='table table-striped'><thead><tr><th class='center'>#</th><th>Codigo</th><th>Nombre Libro</th><th class='right'>Costo unidad</th><th class='center'>Cantidad</th><th class='right'>Total</th></tr></thead><tbody><tr><td class='center'>" + p.IDLibro.String() + "</td><td class='left strong' id='nombreLibro'>" + f.NombreLibro + "</td><td class='left'>Extended License</td><td class='right'>$" + strconv.Itoa(f.Precio/f.Cantidad) + "</td><td class='center'>" + strconv.Itoa(f.Cantidad) + "</td><td class='right'>" + strconv.Itoa(f.Precio) + "</td></tr></tbody></table></div><div class='row'><div class='col-lg-4 col-sm-5'></div><div class='col-lg-4 col-sm-5 ml-auto'><table class='table table-clear'><tbody><tr><td class='left'><strong>Neto</strong></td><td class='right' id='neto'>$" + strconv.Itoa(int(float64(f.Precio)/1.19)) + "</td></tr><tr><td class='left'><strong>IVA (19%)</strong></td><td class='right' id='iva'>$" + strconv.Itoa(int(float64(f.Precio)*0.19/1.19)) + "</td></tr><tr><td class='left'><strong>Total</strong></td><td class='right' id='total'>$" + strconv.Itoa(f.Total) + "</td></tr></tbody></table></div></div></div></div></div>body></html>"
 
 }
